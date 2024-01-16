@@ -4,7 +4,7 @@ const app = express();
 const hbs = require("hbs");
 
 const Upload = require("./models/profReg");
-
+const Registration = require("./models/event")
 
 require("./db/conn");
 const Register = require("./models/registers");
@@ -90,63 +90,23 @@ app.get("/home",(req,res)=>{
     res.sendFile(homePath);
 });
 
-//const views = require("./views");
 
-// Your routes here
-//app.get("/profile", (req, res) => {
-// res.render(views.profilePath, { viewName: "Profile" });
-//});
-
-//app.get("/card", (req, res) => {
-// res.render(views.regcard, { viewName: "Card" });
-//});
-//Bcrypt
-
-//const bcrypt = require("bcryptjs");
-
-//const securePassword = async (password) =>{
-
-  //  const passwordHash = await bcrypt.hash(password, 10);
-    //console.log(passwordHash);
-
-    //const passwordmatch = await bcrypt.compare(password, passwordHash);
-    //console.log(passwordmatch);
-
-//}
-
-//securePassword("12345678");
-
-//Profile connect
 app.listen(port, () => {
     console.log(`server is running at port no ${port}`);
+})
+ 
+app.post("/saveProfile", async (req, res) => {
+  try {
+    const profile = new Upload({
+      name: req.body.name,
+      usn: req.body.usn,
+      email: req.body.email,
+      phone: req.body.phone,
+      branch: req.body.branch
+    });
+    await profile.save();
+    res.status(201).render("dashbord");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
 });
-
-app.post("/saveProfile",async (req, res) => {
-    try {
-        const newRegister = new Upload({
-        name: req.body.name,
-        usn: req.body.usn,
-        email: req.body.email,
-        phone: req.body.phone,
-        branch: req.body.branch
-      });
-  
-      await newRegister.save();
-      
-      // Save the data to a cookie
-      res.cookie('userData', {
-        name: req.body.name,
-        usn: req.body.usn,
-        email: req.body.email,
-        phone: req.body.phone,
-        branch: req.body.branch
-      });
-      
-      res.status(201).render("dashbord");
-
-    } catch (error) {
-      res.status(400).send(error);
-    }
- });
-
-  
