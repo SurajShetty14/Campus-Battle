@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Popins', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ececec;    
+}
+
+.full {
+    /*background-color: #ececec;*/
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.container {
+    min-height: 90vh;
+    padding: 0px;
+}
+
+.card {
+    width: 350px;
+    height: 515px;
+    margin: 100px auto 0;
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    background-size: cover;
+    background-position: center;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+}
+
+.front h2 {
+    font-weight: 500;
+}
+
+.front p {
+    color: #ccc;
+    font-size: 13px;
+}
+
+.front button {
+    width: 120px;
+    border: 1px solid #fff;
+    background: transparent;
+    border-radius: 50px;
+    padding: 8px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.back {
+    background: #fff;
+    color: #333;
+    padding: 20px 40px;
+    transform: rotateY(180deg);
+    border: 1px solid black;
+}
+
+.back h1 {
+    font-size: 30px;
+    line-height: 55px;
+    margin-bottom: 10px;
+}
+
+.back p {
+    font-size: 14px;
+}
+
+.back p span {
+    font-weight: 600;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.bthLogin-popup {
+    width: 130px;
+    height: 50px;
+    /* background: transparent; */
+    border: 2px solid #000000;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #000000;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-left: 60px;
+    transition: .5s;
+}
+
+.bthLogin-popup:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.rules {
+    width: 130px;
+    height: 50px;
+    /* background: transparent; */
+    border: 2px solid #000000;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #000000;
+    font-weight: 500;
+    margin-top: 70px;
+    margin-left: 60px;
+    transition: .5s;
+}
+
+.rules:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.container:nth-child(1) .front {
+    background: url('./img/cards/Cricket.png'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.container:nth-child(2) .front {
+    background: url('./img/cards/football.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.container:nth-child(3) .front {
+    background: url('./img/cards/Kabaddi.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.container:nth-child(4) .front {
+    background: url('./img/cards/Quiz.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.container:nth-child(5) .front {
+    background: url('./img/cards/logo.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.container:nth-child(6) .front {
+    background: url('./img/cards/Rubics.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1000;
+}
+
+.popup1 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1000;
+}
+
+.popup h1 {
+    margin-bottom: 10px;
+}
+
+.popup1 .register {
+    padding: 10px;
+    margin-left: 85px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #000;
+    color: #fff;
+}
+
+.popup button.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #ccc;
+    border: none;
+    font-size: 14px;
+}
+
+.popup1 button.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #ccc;
+    border: none;
+    font-size: 14px;
+}
+
+.popup p {
+    margin-top: 20px;
+}
+
+.icon-location{
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #000000;
+    font-weight: 700;
+    margin-top: 100px;
+    margin-left: 60px;
+}
+
+.icon-date{
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #000000;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+.icon-time{
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #000000;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-left: 60px;
+}

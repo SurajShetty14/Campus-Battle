@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="css/card.css">
+</head>
+<body>
+    <body>
+        <div class="full">
+            <div class="container">
+                <div class="card card1">
+                    <div class="card-inner">
+                        <div class="front">
+                            <!--content-->
+                        </div>
+                        <div class="back">
+                            <h1>Cricket</h1>
+                            <div class="icon-location"><ion-icon name="location-sharp"></ion-icon>  CEC Ground</div>
+                            <div class="icon-date"><ion-icon name="calendar-sharp"></ion-icon>  12/02/2024</div>
+                            <div class="icon-time"><ion-icon name="alarm-sharp"></ion-icon>  09:30 am</div>
+                            <button class="rules" id="Cricket">Rules</button><br>
+                            <button class="bthLogin-popup" id="cric" onclick="openRegister('Cricket')">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="card card2">
+                    <div class="card-inner">
+                        <div class="front">
+                            <!--content-->
+                        </div>
+                        <div class="back">
+                            <h1>Football</h1>
+                            <div class="icon-location"><ion-icon name="location-sharp"></ion-icon>  CEC Ground</div>
+                            <div class="icon-date"><ion-icon name="calendar-sharp"></ion-icon>  25/02/2024</div>
+                            <div class="icon-time"><ion-icon name="alarm-sharp"></ion-icon>  04:30 pm</div>
+                            <button class="rules" id="FootBall">Rules</button><br>
+                            <button class="bthLogin-popup" id="foot" onclick="openRegister('FootBall')">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="card card3">
+                    <div class="card-inner">
+                        <div class="front">
+                            <!--content-->
+                        </div>
+                        <div class="back">
+                            <h1>Kabaddi</h1>
+                            <div class="icon-location"><ion-icon name="location-sharp"></ion-icon>  Bandminton Court</div>
+                            <div class="icon-date"><ion-icon name="calendar-sharp"></ion-icon>  01/03/2024</div>
+                            <div class="icon-time"><ion-icon name="alarm-sharp"></ion-icon>  03:30 pm</div>
+                            <button class="rules" id="Kabaddi">Rules</button><br>
+                            <button class="bthLogin-popup" id="Kab" onclick="openRegister('Kabaddi')">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <!-- New cards -->
+        <div class="container">
+            <div class="card card4">
+                <div class="card-inner">
+                    <div class="front">
+                        <!--content-->
+                    </div>
+                    <div class="back">
+                        <h1>Quiz Quest</h1>
+                        <div class="icon-location"><ion-icon name="location-sharp"></ion-icon>  AC Seminar Hall</div>
+                        <div class="icon-date"><ion-icon name="calendar-sharp"></ion-icon>  23/01/2024</div>
+                        <div class="icon-time"><ion-icon name="alarm-sharp"></ion-icon>  2:30 pm</div>
+                        <button class="rules" id="QuizQuest">Rules</button><br>
+                        <button class="bthLogin-popup" id="quiz" onclick="openRegister('QuizQuest')">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card card5">
+                <div class="card-inner">
+                    <div class="front">
+                        <!--content-->
+                    </div>
+                    <div class="back">
+                        <h1>Logo Designing</h1>
+                        <div class="icon-location"><ion-icon name="location-sharp"></ion-icon>  Skill Lab</div>
+                        <div class="icon-date"><ion-icon name="calendar-sharp"></ion-icon>  30/02/2024</div>
+                        <div class="icon-time"><ion-icon name="alarm-sharp"></ion-icon>  05:00 pm</div>
+                        <button class="rules" id="LogoDesigning">Rules</button><br>
+                        <button class="bthLogin-popup" id="logo" onclick="openRegister('LogoDesigning')">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card card6">
+                <div class="card-inner">
+                    <div class="front">
+                        <!--content-->
+                    </div>
+                    <div class="back">
+                        <h1>Rubics Cube</h1>
+                        <div class="icon-location"><ion-icon name="location-sharp"></ion-icon>  CEC Activity Room</div>
+                        <div class="icon-date"><ion-icon name="calendar-sharp"></ion-icon>  28/03/2024</div>
+                        <div class="icon-time"><ion-icon name="alarm-sharp"></ion-icon>  04:00 pm</div>
+                        <button class="rules" id="RubicsCube">Rules</button><br>
+                        <button class="bthLogin-popup" id="rubics" onclick="openRegister('RubicsCube')">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <!-- Popup container for rules -->
+        <div class="popup" id="popupRules">
+            <h1 id="popupTitle"></h1>
+            <hr>
+            <button onclick="closePopup()" class="close"><ion-icon name="close"></ion-icon></button>
+            <p id="popupContent"></p>
+        </div>
+    
+        <!-- Separate div for registration -->
+        <div class="popup1" id="popupRegistration" style="display: none;">
+            <h1>Register Now</h1>
+            <hr>
+            <button class="register" onclick="register()">Register</button>
+            <button class="close" onclick="closeRegistration()"><ion-icon name="close"></ion-icon></ion-icon></button>
+        </div>
+    
+        <script>
+            function openPopup(sport) {
+                // Display the popup for rules
+                document.getElementById('popupRules').style.display = 'block';
+    
+                // Set the title, content, date, and place based on the sport
+                var title = "";
+                var content = "";
+                var dateAndPlace = "";
+    
+                if (sport === 'Cricket') {
+                    title = 'Cricket Rules';
+                    content = 'Cricket is a bat-and-ball game played between two teams of eleven players.\n'
+                        + 'The objective is to score runs by hitting the ball with a bat and running between wickets.\n'
+                        + 'The game is divided into overs, and teams take turns batting and bowling.\n\n'
+                        + 'Additional rules for Cricket:\n'
+                        + '1. Each team has a set number of overs to bat and bowl.\n'
+                        + '2. The team with the highest score at the end of the game wins.\n'
+                        + '3. Various methods, such as catches and bowled, are used to dismiss players.';
+                    dateAndPlace = 'Date: 12/02/2024\nPlace: CEC Ground';
+                } else if (sport === 'FootBall') {
+                    title = 'Football Rules';
+                    content = 'Football, also known as soccer, is a team sport played with a spherical ball between two teams of eleven players.\n'
+                        + 'The objective is to score goals by getting the ball into the opposing team\'s goal.\n'
+                        + 'Players primarily use their feet, but they can also use their heads or bodies.\n\n'
+                        + 'Additional rules for Football:\n'
+                        + '1. Offsides: Players must not be nearer to the opponent\'s goal than both the ball and the second-to-last defender.\n'
+                        + '2. Fouls: Various fouls, such as handballs and dangerous play, result in free kicks or penalties.\n'
+                        + '3. The team with the most goals at the end of the match wins.';
+                    dateAndPlace = 'Date: 25/02/2024 \nPlace: CEC Ground';
+                } else if (sport === 'Kabaddi') {
+                    title = 'Kabaddi Rules';
+                    content = 'Kabaddi is a contact team sport that originated in ancient India.\n'
+                        + 'It is played between two teams, and the objective is to score points by tagging opponents and returning to one\'s half of the field.\n'
+                        + 'The game involves physical strength, strategy, and agility.\n\n'
+                        + 'Additional rules for Kabaddi:\n'
+                        + '1. Raiders: A player, known as the raider, enters the opponent\'s half to tag defenders and return to their half.\n'
+                        + '2. Defenders: Players in their own half try to prevent the raider from returning.\n'
+                        + '3. Points are scored for each tagged opponent, and the team with the most points at the end wins.';
+                    dateAndPlace = 'Date: 01/03/2024 \nPlace: Bandminton Court';
+                }else if (sport === 'QuizQuest') {
+                title = 'Quiz Quest Rules';
+                content = 'Quiz Quest is a trivia game where players answer questions from various categories.\n'
+                    + 'The objective is to answer the most questions correctly within a given time limit.\n'
+                    + 'Players take turns answering questions, and they can choose to use lifelines for assistance.\n\n'
+                    + 'Additional rules for Quiz Quest:\n'
+                    + '1. Time Limit: Each question has a time limit, and players must answer before it expires.\n'
+                    + '2. Lifelines: Players have three lifelines to help them answer difficult questions.\n'
+                    + '3. Scoring: Each correct answer earns points, and the player with the highest score at the end wins.';
+                dateAndPlace = 'Date: 23/01/2024 \nPlace: AC Seminar Hall';
+            } else if (sport === 'LogoDesigning') {
+                title = 'Logo Designing Rules';
+                content = 'Logo Designing is a creative competition where participants design a logo for a given theme or brand.\n'
+                    + 'The objective is to create an original, visually appealing, and memorable logo.\n'
+                    + 'Submissions are judged based on creativity, relevance, and overall design quality.\n\n'
+                    + 'Additional rules for Logo Designing:\n'
+                    + '1. Theme: Participants must adhere to the specified theme or brand guidelines.\n'
+                    + '2. Originality: Plagiarism is not allowed, and submissions must be original works.\n'
+                    + '3. Format: Logos must be submitted in vector format (e.g., SVG, EPS).';
+                dateAndPlace = 'Date: 30/02/2024 \nPlace: Skill Lab';
+            } else if (sport === 'RubicsCube') {
+                title = 'Rubics Cube Rules';
+                content = 'Rubics Cube is a 3D puzzle consisting of a 3x3x3 grid of colored cubes.\n'
+                    + 'The objective is to scramble the cube and then return it to its original state as quickly as possible.\n'
+                    + 'Players can use various algorithms and techniques to solve the cube.\n\n'
+                    + 'Additional rules for Rubics Cube:\n'
+                    + '1. Scrambling: The cube is scrambled using a random sequence of moves.\n'
+                    + '2. Time Limit: Players have a set time limit to solve the cube.\n'
+                    + '3. Winner: The player who solves the cube in the shortest time wins.';
+                dateAndPlace = 'Date: 28/03/2024 \nPlace: CEC Activity Room';
+            }
+    
+                document.getElementById('popupTitle').innerText = title;
+                document.getElementById('popupContent').innerText = content + '\n\n' + dateAndPlace;
+    
+                // Store the popup state in sessionStorage
+                sessionStorage.setItem('popupState', 'open');
+                sessionStorage.setItem('popupSport', sport);
+            }
+    
+            function openRegister(sport) {
+                // Display the registration popup
+                document.getElementById('popupRegistration').style.display = 'block';
+    
+                // Store the selected sport in sessionStorage
+                sessionStorage.setItem('selectedSport', sport);
+            }
+    
+            function closeRegistration() {
+                // Hide the registration popup
+                document.getElementById('popupRegistration').style.display = 'none';
+    
+                // Remove the selected sport from sessionStorage
+                sessionStorage.removeItem('selectedSport');
+            }
+    
+            function closePopup() {
+                // Hide the rules popup
+                document.getElementById('popupRules').style.display = 'none';
+    
+                // Remove the popup state from sessionStorage
+                sessionStorage.removeItem('popupState');
+                sessionStorage.removeItem('popupSport');
+            }
+    
+            function register() {
+                // Retrieve the selected sport from sessionStorage
+                var selectedSport = sessionStorage.getItem('selectedSport');
+    
+                // Handle the registration logic (you can customize this part)
+                alert('Registered for ' + selectedSport);
+    
+                // Close the registration popup
+                closeRegistration();
+            }
+    
+            // Add event listeners to each Rules button
+            document.getElementById('Cricket').addEventListener('click', function () {
+                openPopup('Cricket');
+            });
+    
+            document.getElementById('FootBall').addEventListener('click', function () {
+                openPopup('FootBall');
+            });
+    
+            document.getElementById('Kabaddi').addEventListener('click', function () {
+                openPopup('Kabaddi');
+            });
+
+            document.getElementById('QuizQuest').addEventListener('click', function () {
+                openPopup('QuizQuest');
+            });
+
+            document.getElementById('LogoDesigning').addEventListener('click', function () {
+                openPopup('LogoDesigning');
+            });
+
+            document.getElementById('RubicsCube').addEventListener('click', function () {
+                openPopup('RubicsCube');
+            });
+    
+            // Check for the presence of the popup state in sessionStorage on page load
+            window.addEventListener('load', function () {
+                var popupState = sessionStorage.getItem('popupState');
+                var popupSport = sessionStorage.getItem('popupSport');
+                if (popupState === 'open' && popupSport) {
+                    openPopup(popupSport);
+                } else {
+                    // If no stored state, ensure the popup is hidden
+                    closePopup();
+                }
+            });
+    
+            // Add event listener to Register buttons to update sessionStorage
+            document.querySelectorAll('.bthLogin-popup').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    // Get the sport type associated with the button
+                    var sportType = this.parentNode.querySelector('.rules').id;
+    
+                    // Store the popup state and sport type in sessionStorage
+                    sessionStorage.setItem('popupState', 'open');
+                    sessionStorage.setItem('popupSport', sportType);
+                });
+            });
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

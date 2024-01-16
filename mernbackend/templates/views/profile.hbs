@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile Page</title>
+        <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <center>
+        <div class="box">
+            <form action="/saveProfile" method="post">
+                <input type="file" class="profile-input" name="profileImage" id="file" accept="image/*">
+                <img id="profile-photo" src="" alt="">
+                <label for="file">Profile Photo</label>
+                <br><br><br>
+                <input type="text" name="name" class="profile-input" placeholder="User Name">
+                <input type="text" name="usn" class="profile-input" placeholder="USN">
+                <input type="email" name="eemail" class="profile-input" placeholder="Email ID">
+                <input type="text" name="phone" class="profile-input" placeholder="Phone number">
+                <input type="text" name="branch" class="profile-input" placeholder="Branch">
+                <button style="float: left;margin:10px 0 0 18.2%;" class="edit-button">Edit</button>
+                <button style="float: right;margin:10px 18.2% 0 0;" class="save-button">Save</button>
+            </form>
+        </div>
+    </center>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function readURL(input) {
+           if (input.files && input.files[0]) {
+             var reader = new FileReader();
+             reader.onload = function(e) {
+               $('#profile-photo').attr('src', e.target.result);
+             }
+             reader.readAsDataURL(input.files[0]);
+           }
+        }
+        $(document).ready(function() {
+           $("#file").change(function() {
+             readURL(this);
+           });
+        });
+       </script>
+</body>
+</html>
