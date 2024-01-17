@@ -4,7 +4,7 @@ const app = express();
 const hbs = require("hbs");
 
 const Upload = require("./models/profReg");
-const Registration = require("./models/event")
+const Profile = require("./models/event");
 
 require("./db/conn");
 const Register = require("./models/registers");
@@ -90,6 +90,11 @@ app.get("/home",(req,res)=>{
     res.sendFile(homePath);
 });
 
+const{contactPath} = require("../templates/paths")
+app.get("/contact",(req,res)=>{
+    res.sendFile(contactPath);
+});
+
 
 app.listen(port, () => {
     console.log(`server is running at port no ${port}`);
@@ -110,3 +115,35 @@ app.post("/saveProfile", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
+
+//register conn
+
+const bodyParser = require("body-parser");
+
+// Create a mongoose model for person profiles
+
+  
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(express.static("public"));
+
+app.post("/saveProfile", async (req, res) => {
+    try {
+      const profile = new Profile({
+        name: req.body.name,
+        usn: req.body.usn,
+        email: req.body.email,
+        phone: req.body.phone,
+        branch: req.body.branch,
+        eventName: req.body.eventName // Assuming you send the event name from the front-end
+      });
+  
+      // Save the profile to MongoDB
+      await profile.save();
+      res.status(201).render("dashboard");
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
+
+  

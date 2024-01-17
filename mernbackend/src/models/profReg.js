@@ -5,14 +5,14 @@ const profileReg = new mongoose.Schema({
         type:String,
         required:true
     },
-    usn : { 
+    usn : {         
         type:String,
         required:true
     },
     email : {
         type:String,
         required:true,
-        unique:true
+        unique: true
     },
     phone : { 
         type:String,
@@ -23,6 +23,7 @@ const profileReg = new mongoose.Schema({
         required:true
     }
 });
+
 const Upload = new mongoose.model("Upload", profileReg);
 
 module.exports = Upload;

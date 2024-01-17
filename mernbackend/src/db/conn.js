@@ -7,3 +7,5 @@ mongoose.connect("mongodb://localhost:27017/Sports")
   .catch((err) => {
     console.error("Connection failed:", err);
   });
+
+  

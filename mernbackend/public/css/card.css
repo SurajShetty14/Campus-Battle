@@ -11,8 +11,7 @@ body{
 
 .full {
     /*background-color: #ececec;*/
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     height: 100vh;
     justify-content: space-between;
     margin: 15px;

@@ -21,9 +21,12 @@
                             <div class="icon-date"><ion-icon name="calendar-sharp"></ion-icon>  12/02/2024</div>
                             <div class="icon-time"><ion-icon name="alarm-sharp"></ion-icon>  09:30 am</div>
                             <button class="rules" id="Cricket">Rules</button><br>
-                            <form action="/register" method="post">
-                            <button class="bthLogin-popup" id="cric">Register</button>
+                            <form action="/saveProfile" method="post">
+                            <input type="hidden" name="eventName" id="eventName" value="Cricket"> <!-- Update this value dynamically based on the event -->
+                            <!-- Your other input fields for person details -->
+                            <button class="bthLogin-popup" id="cric" data-event-name="Cricket">Register</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -40,10 +43,7 @@
                             <div class="icon-date"><ion-icon name="calendar-sharp"></ion-icon>  25/02/2024</div>
                             <div class="icon-time"><ion-icon name="alarm-sharp"></ion-icon>  04:30 pm</div>
                             <button class="rules" id="FootBall">Rules</button><br>
-                            <form action="/register" method="POST">
-                            <button type="submit">Register</button>
-                            </form>
-
+                            <button class="bthLogin-popup" id="fot" onclick="openRegister('Football')">Register</button>
                         </div>
                     </div>
                 </div>
@@ -136,6 +136,15 @@
         </div>
     
         <script>
+            document.querySelectorAll('.bthLogin-popup').forEach(function (button) {
+            button.addEventListener('click', function () {
+            var sportType = this.getAttribute('data-event-name');
+            document.getElementById('eventName').value = sportType;
+            sessionStorage.setItem('popupState', 'open');
+            sessionStorage.setItem('popupSport', sportType);
+            });
+            });
+
             function openPopup(sport) {
                 // Display the popup for rules
                 document.getElementById('popupRules').style.display = 'block';
@@ -298,8 +307,9 @@
                     sessionStorage.setItem('popupState', 'open');
                     sessionStorage.setItem('popupSport', sportType);
                 });
-            });
+            });        
         </script>
+         <script src="scripts/card.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
